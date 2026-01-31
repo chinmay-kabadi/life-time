@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only You ♾️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:radial-gradient(circle at top,#0b0f1a,#020409);
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.stars{
+  position:fixed;
+  inset:0;
+  background:url(".1233.jpg") repeat;
+  opacity:0.35;
+  animation:stars 160s linear infinite;
+  z-index:0;
+}
+
+@keyframes stars{to{background-position:-2000px 2000px}}
+
+.glow{
+  position:fixed;inset:0;
+  background:radial-gradient(circle at top,rgba(255,255,255,.08),transparent 60%);
+  z-index:1;
+}
+
+/* FALLING HEARTS */
+.heart{
+  position:fixed;
+  top:-10%;
+  color:#ff9ecf;
+  animation:fall linear infinite;
+  opacity:.8;
+  z-index:2;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
+}
+
+/* SECTION COMMON */
+section{
+  position:relative;
+  z-index:3;
+  min-height:100vh;
+  padding:80px 20px 120px;
+  text-align:center;
+}
+
+/* TITLES */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.7rem;
+}
+.subtitle{
+  opacity:.85;
+  margin:15px 0 60px;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:26px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card{perspective:1000px}
+.card-inner{
+  height:200px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:.8s;
+}
+.card:hover .card-inner{transform:rotateY(180deg)}
+
+.card-front,.card-back{
+  position:absolute;inset:0;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  backface-visibility:hidden;
+  box-shadow:0 0 30px rgba(255,255,255,.08);
+}
+
+.card-front{
+  background:rgba(255,255,255,.06);
+}
+.card-back{
+  background:rgba(255,182,213,.18);
+  transform:rotateY(180deg);
+  font-size:.95rem;
+  color:#ffd6e8;
+}
+
+/* BUTTON */
+.btn{
+  margin-top:70px;
+  padding:14px 50px;
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,.4);
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  letter-spacing:1.4px;
+  transition:.4s;
+}
+.btn:hover{
+  background:rgba(255,182,213,.2);
+  box-shadow:0 0 30px rgba(255,182,213,.5);
+}
+
+/* MISS ME PAGE */
+.feel-btns{
+  display:grid;
+  gap:20px;
+  max-width:420px;
+  margin:40px auto;
+}
+.feel-btns button{
+  padding:16px;
+  border-radius:14px;
+  border:none;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+.feel-btns button:hover{
+  background:rgba(255,182,213,.25);
+}
+
+.message{
+  margin-top:40px;
+  font-size:1.4rem;
+  color:#ffd6e8;
+  min-height:120px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="glow"></div>
+
+<!-- FALLING HEARTS -->
+<script>
+for(let i=0;i<25;i++){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDuration=5+Math.random()*6+"s";
+  h.style.fontSize=14+Math.random()*20+"px";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- PAGE 1: 85 REASONS -->
+<section id="reasons">
+<h1>85 Reasons I Love You ♾️</h1>
+<div class="subtitle">Every reason has a heartbeat 💗</div>
+
+<div class="cards">
+<script>
+const reasons=[
+"Your eyes 👀","Your hair 💫","Your lips 💋","Your name 📝","Your personality 🌈",
+"Your laugh 😂","Your smile 😊","Your voice 🎶","Your hands 🤝","Your hugs 🫂",
+"Your joy ✨","Your tears 💧","Your face 😍","Your kindness 🤍","Your affection 💞",
+"Our friendship 🫶","Your beauty ✨","Your love ❤️","Your messages 💬","Your style 👗",
+"Your forgiveness 🕊️","Your honesty 💎","Our memories 📸","Your patience 🌷",
+"Your strength 💪","Your bravery 🦁","Your intelligence 🧠","Your passion 🔥",
+"Your creativity 🎨","Your heart 💓","The way you listen 👂","The way you care 🤍",
+"Your loyalty 🔐","Your trust 🤞","Your comfort 🛋️","Your encouragement 🌻",
+"Your silly side 😄","Your seriousness 🖤","Your dreams 🌠","Your faith 🙏",
+"Your softness 🌸","Your courage 🛡️","Your calm 🌊","Your chaos ⚡",
+"Your voice notes 🎧","Your surprises 🎁","Your reassurance 🫂",
+"Your time ⏳","Your effort 💪","Your flaws 🌙","Your imperfections 🌟",
+"Your respect 🧡","Your jealousy 😌","Your protectiveness 🛡️",
+"Your belief in me 🌈","Your future dreams 🌠","Your promises 🤞",
+"Your healing presence 💖","Your soulmate energy 💍","Your forever ♾️"
+];
+reasons.forEach((r,i)=>{
+document.write(`
+<div class="card">
+ <div class="card-inner">
+  <div class="card-front">${i+1}️⃣ ${r}</div>
+  <div class="card-back">Because loving you feels like home 🏡</div>
+ </div>
+</div>`);
+});
+</script>
+</div>
+
+<a href="miss.html"><button class="btn">🌙 When You Miss Me</button></a>
+</section>
+
+</body>
+</html>

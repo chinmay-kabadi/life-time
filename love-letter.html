@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>From My Soul</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BODY */
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top, #0c1224, #020409);
+  color:#f5f5f5;
+  font-family:'Poppins', sans-serif;
+  overflow-y:auto;
+  animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ===== BACKGROUND ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  overflow:hidden;
+}
+
+/* MOON */
+.moon{
+  position:absolute;
+  top:60px;
+  right:80px;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #ffffff, #dcdcdc);
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.4),
+    0 0 90px rgba(255,255,255,0.2);
+  animation:moonFloat 8s ease-in-out infinite;
+}
+
+@keyframes moonFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(12px);}
+}
+
+/* STARS */
+.stars{
+  position:absolute;
+  inset:0;
+  background:url(".1233.jpg") repeat;
+  opacity:0.22;
+  animation:starMove 140s linear infinite;
+  z-index:0;
+}
+
+
+@keyframes starMove{
+  from{background-position:0 0;}
+  to{background-position:-3000px 3000px;}
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:-30px;
+  color:rgba(255,160,190,0.6);
+  animation:heartFloat linear infinite;
+  z-index:-1;
+}
+
+@keyframes heartFloat{
+  from{
+    transform:translateY(0) scale(0.6);
+    opacity:0;
+  }
+  to{
+    transform:translateY(-110vh) scale(1.2);
+    opacity:1;
+  }
+}
+
+/* ===== CONTENT ===== */
+.wrapper{
+  max-width:900px;
+  margin:0 auto;
+  padding:100px 26px 140px;
+}
+
+.title{
+  font-family:'Allura', cursive;
+  font-size:4.2rem;
+  text-align:center;
+  color:#ffd6e8;
+  margin-bottom:60px;
+  text-shadow:0 0 22px rgba(255,182,213,0.35);
+}
+
+.letter{
+  font-family:'Allura', cursive;
+  font-size:2.3rem;
+  line-height:2.6;
+  letter-spacing:0.8px;
+  white-space:pre-line;
+  text-shadow:0 0 10px rgba(255,255,255,0.08);
+}
+
+/* CURSOR */
+.cursor{
+  display:inline-block;
+  margin-left:4px;
+  animation:blink 1.2s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+/* BUTTON */
+button{
+  margin:90px auto 0;
+  display:block;
+  padding:14px 46px;
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,0.35);
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  letter-spacing:1.4px;
+  transition:0.3s;
+}
+
+button:hover{
+  background:rgba(255,255,255,0.12);
+  box-shadow:0 0 30px rgba(255,255,255,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg">
+  <div class="moon"></div>
+  <div class="stars"></div>
+</div>
+
+<!-- CONTENT -->
+<div class="wrapper">
+  <div class="title">From My Soul 💌</div>
+  <div class="letter" id="letterText"></div>
+
+  <button onclick="nextPage()">Continue…</button>
+</div>
+
+<audio id="music" loop autoplay>
+  <source src="https://cdn.pixabay.com/audio/2023/05/25/audio_8d7c3c8f0f.mp3">
+</audio>
+
+<script>
+/* LOVE LETTER TEXT */
+const letter = `
+My love,
+
+I don’t know when it happened…
+but somehow, you became my calm,
+my chaos, and my home — all at once.
+
+You are special in ways you don’t even notice.
+Your smile stays with me longer than the day,
+and your presence feels like peace.
+
+You changed my life without trying.
+You made ordinary moments feel meaningful.
+You made my heart believe in something real.
+
+When you’re not around,
+everything feels a little quieter,
+a little heavier,
+and a lot less warm.
+
+But even in the distance,
+I carry you with me —
+in my thoughts,
+in my heart,
+in every silent promise I make.
+
+And here is my promise to you:
+
+No matter the distance.
+No matter the storms.
+No matter the days we don’t understand each other…
+
+I choose you.
+Again and again.
+Always.
+`;
+
+/* TYPING EFFECT */
+let i = 0;
+const speed = 65; // slow & emotional
+const el = document.getElementById("letterText");
+
+function typeLetter(){
+  if(i < letter.length){
+    el.innerHTML = letter.substring(0, i + 1) + '<span class="cursor">|</span>';
+    i++;
+    setTimeout(typeLetter, speed);
+  } else {
+    el.innerHTML = letter;
+  }
+}
+typeLetter();
+
+/* FLOATING HEARTS */
+for(let i=0;i<18;i++){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.animationDuration = 18 + Math.random()*12 + "s";
+  heart.style.fontSize = 14 + Math.random()*16 + "px";
+  heart.style.opacity = Math.random()*0.6;
+  document.body.appendChild(heart);
+}
+
+/* NEXT PAGE */
+function nextPage(){
+  document.body.style.opacity = 0;
+  setTimeout(()=>{
+    window.location.href = "forever.html";
+  },1200);
+}
+</script>
+
+</body>
+</html>

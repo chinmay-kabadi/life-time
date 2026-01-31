@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Story</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top, #0c1224, #020409);
+  color:#fff;
+  font-family:'Poppins', sans-serif;
+  overflow-x:hidden;
+  animation:fadeIn 2s ease forwards;
+  transition:opacity 1.2s ease;
+}
+
+body.fade-out{
+  opacity:0;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ===== BACKGROUND ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+  background:url("1233.jpg") repeat;
+  opacity:0.22;
+  animation:starMove 140s linear infinite;
+}
+
+
+@keyframes starMove{
+  from{background-position:0 0;}
+  to{background-position:-3000px 3000px;}
+}
+
+.moon{
+  position:absolute;
+  top:60px;
+  right:80px;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #fff, #dcdcdc);
+  box-shadow:0 0 40px rgba(255,255,255,0.4);
+  animation:float 8s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(12px);}
+}
+
+/* ===== TITLE ===== */
+.title{
+  text-align:center;
+  font-family:'Allura', cursive;
+  font-size:4rem;
+  margin:90px 0 60px;
+  color:#ffd6e8;
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  max-width:900px;
+  margin:0 auto 120px;
+  padding:0 20px;
+  position:relative;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:rgba(255,255,255,0.15);
+  transform:translateX(-50%);
+}
+
+/* ===== CARD ===== */
+.card{
+  width:45%;
+  padding:26px;
+  background:rgba(255,255,255,0.05);
+  border-radius:18px;
+  box-shadow:0 0 30px rgba(255,255,255,0.08);
+  margin-bottom:80px;
+  position:relative;
+}
+
+.card.left{left:0;}
+.card.right{left:55%;}
+
+.card::after{
+  content:"";
+  position:absolute;
+  top:30px;
+  width:14px;
+  height:14px;
+  background:#ffd6e8;
+  border-radius:50%;
+  box-shadow:0 0 15px rgba(255,182,213,0.7);
+}
+
+.card.left::after{right:-32px;}
+.card.right::after{left:-32px;}
+
+.card h3{
+  font-family:'Allura', cursive;
+  font-size:2.3rem;
+  margin-bottom:12px;
+  color:#ffd6e8;
+}
+
+.card p{
+  font-size:0.95rem;
+  line-height:1.7;
+  opacity:0.9;
+}
+
+/* ===== PHOTO MEMORY ===== */
+.memory-photo{
+  margin-top:16px;
+}
+
+.memory-photo img{
+  width:100%;
+  border-radius:14px;
+  box-shadow:0 0 20px rgba(255,255,255,0.15);
+}
+
+.memory-caption{
+  margin-top:10px;
+  font-size:0.85rem;
+  opacity:0.8;
+  font-style:italic;
+}
+
+/* ===== NEXT BUTTON ===== */
+.next-section{
+  text-align:center;
+  margin-bottom:90px;
+}
+
+.next-btn{
+  padding:14px 46px;
+  font-size:1rem;
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,0.35);
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  letter-spacing:1.4px;
+  transition:0.35s ease;
+}
+
+.next-btn:hover{
+  background:rgba(255,182,213,0.15);
+  box-shadow:0 0 30px rgba(255,182,213,0.45);
+  color:#ffd6e8;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .timeline::before{left:10px;}
+  .card{
+    width:100%;
+    left:0 !important;
+    padding-left:40px;
+  }
+  .card::after{
+    left:2px !important;
+    right:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+  <div class="moon"></div>
+  <div class="stars"></div>
+</div>
+
+<div class="title">Our Story 🕰️</div>
+
+<div class="timeline">
+
+  <div class="card left">
+    <h3>💬 First meet</h3>
+    <p>Where everything quietly began.</p>
+    <div class="memory-photo">
+      <img src="1.jpg">
+      <div class="memory-caption">That first place… unknowingly changed my life.</div>
+    </div>
+  </div>
+
+  <div class="card right">
+    <h3>😊 First Smile</h3>
+    <p>The moment I felt something real.</p>
+    <div class="memory-photo">
+      <img src="2.jpg.jpeg">
+      <div class="memory-caption">This smile still lives in my heart.</div>
+    </div>
+  </div>
+
+  <div class="card left">
+    <h3>❤️ First “I Miss You”</h3>
+    <p>When distance became real.</p>
+    <div class="memory-photo">
+      <img src="3.jpg.jpeg">
+      <div class="memory-caption">That message meant more than you know.</div>
+    </div>
+  </div>
+
+  <div class="card right">
+    <h3>🫂 First Fight</h3>
+    <p>And choosing love anyway.</p>
+    <div class="memory-photo">
+      <img src="22.jpg">
+      <div class="memory-caption">We learned love is stronger than ego.</div>
+    </div>
+  </div>
+
+  <div class="card left">
+    <h3>🌈 Today & Forever</h3>
+    <p>This is only the beginning.</p>
+    <div class="">
+      <img src="123.jpeg">
+      <div class="memory-caption">Still choosing you. Always.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="next-section">
+  <button class="next-btn" onclick="goNext()">
+    Reasons I Love You ♾️
+  </button>
+</div>
+
+<script>
+function goNext(){
+  document.body.classList.add("fade-out");
+  setTimeout(()=>{
+    window.location.href = "reasons.html";
+  },1200);
+}
+</script>
+
+</body>
+</html>
